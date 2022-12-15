@@ -41,6 +41,9 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v2
       with:
         python-version: 3.7
+    - name: Print cil version
+      run: |
+        conda list | grep -E '^cil\s' | awk '{print $2}'
     - uses: lauramurgatroyd/build-sphinx-action@v0.1.1
       with:
         DOCS_PATH: 'docs'
