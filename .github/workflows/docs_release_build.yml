@@ -3,6 +3,8 @@ name: docs_release_build
 on:
   release:
     types: [ published ]
+  # create: ?
+
 
 jobs:
   conda_build:
