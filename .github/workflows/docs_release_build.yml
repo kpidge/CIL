@@ -1,9 +1,8 @@
-name: conda_and_docs_build
+name: docs_release_build
 
 on:
   release:
     types: [ published ]
-
 
 jobs:
   conda_build:
