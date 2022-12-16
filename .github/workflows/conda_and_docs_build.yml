@@ -43,9 +43,12 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v2
       with:
         python-version: 3.7
-    - name: Print cil version
+    - name: Extract CIL git tag
       run: |
-        conda list | grep -E '^cil\s' | awk '{print $2}'
+        echo "tag=`git describe | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'`" >> $GITHUB_ENV
+    - name: Print CIL git tag
+      run: |
+        echo ${{ env.tag }}
     - uses: lauramurgatroyd/build-sphinx-action@v0.1.1
       with:
         DOCS_PATH: 'docs'
