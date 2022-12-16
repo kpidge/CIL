@@ -1,13 +1,8 @@
 name: conda_and_docs_build
 
 on:
-  push:
-    branches:
-      - [ master ]
-    tags:
-      - '**'
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [ published ]
 
 jobs:
   conda_build:
@@ -41,6 +36,12 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v2
       with:
         python-version: 3.7
+    - name: Extract CIL git tag
+      run: |
+        echo "tag=`git describe | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'`" >> $GITHUB_ENV
+    - name: Print CIL git tag
+      run: |
+        echo ${{ env.tag }}
     - uses: lauramurgatroyd/build-sphinx-action@v0.1.1
       with:
         DOCS_PATH: 'docs'
@@ -49,7 +50,7 @@ jobs:
         PACKAGE_FOLDER_PATH: 'conda_package'
         PACKAGE_NAME: 'cil'
         PACKAGE_CONDA_CHANNELS: 'conda-forge -c intel -c astra-toolbox/label/dev -c cvxgrp -c ccpi'
-        BUILD_SUBDIR_NAME: 'nightly'
+        BUILD_SUBDIR_NAME: ${{ env.tag }}
   docs_publish:
     needs: docs_build
     runs-on: ubuntu-latest

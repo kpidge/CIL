@@ -30,10 +30,10 @@ test:
     - ./Wrappers/Python/test     # [win]
     - ./Wrappers/Python/test # [not win] 
 
-  commands:
-    - python -c "import os; print ('TESTING IN THIS DIRECTORY' , os.getcwd())"
-    - python -m unittest discover -v -s Wrappers/Python/test  # [win]
-    - python -m unittest discover -s Wrappers/Python/test -v  # [not win]
+  # commands:
+  #   - python -c "import os; print ('TESTING IN THIS DIRECTORY' , os.getcwd())"
+  #   - python -m unittest discover -v -s Wrappers/Python/test  # [win]
+  #   - python -m unittest discover -s Wrappers/Python/test -v  # [not win]
     
 requirements:
   build:
