@@ -3,6 +3,7 @@ name: test_action
 on:
   release:
     types: [ published ]
+    branches: [ master ]
 
 jobs:
   docs_build:
