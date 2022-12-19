@@ -1,0 +1,23 @@
+name: test_action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docs_build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        python-version: 3.7
+    - name: List all tags
+      run: git tag -n
+    - name: Extract CIL git tag
+      run: |
+        echo "tag=`git describe | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'`" >> $GITHUB_ENV
+    - name: Print CIL git tag
+      run: |
+        echo ${{ env.tag }}

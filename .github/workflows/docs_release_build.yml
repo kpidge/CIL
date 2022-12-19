@@ -4,6 +4,7 @@ on:
   release:
     types: [ published ]
 
+
 jobs:
   conda_build:
     runs-on: ubuntu-latest
