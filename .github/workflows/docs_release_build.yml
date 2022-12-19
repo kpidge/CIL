@@ -52,16 +52,17 @@ jobs:
   docs_publish:
     needs: docs_build
     runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/master'
     steps:
     - name: Download artifact of the html output.
       uses: actions/download-artifact@v2
       with:
         name: DocumentationHTML
         path: docs/build
+    - uses: actions/checkout@v3
+      with:
+        ref: gh-pages
     - name: Commit documentation changes
       run: |
-        git clone https://github.com/TomographicImaging/CIL.git --branch gh-pages --single-branch gh-pages
         cp -r docs/build/* gh-pages/
         cd gh-pages
         touch .nojekyll
