@@ -63,8 +63,7 @@ jobs:
         ref: gh-pages
     - name: Commit documentation changes
       run: |
-        cp -r docs/build/* gh-pages/
-        cd gh-pages
+        cp -r ../docs/build/* ./
         touch .nojekyll
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
