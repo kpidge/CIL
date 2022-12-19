@@ -1,7 +1,7 @@
 name: test_action
 
 on:
-  manual_dispatch:
+  workflow_dispatch:
 
 jobs:
   docs_build:
