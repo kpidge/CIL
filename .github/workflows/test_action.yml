@@ -1,7 +1,7 @@
 name: test_action
 
 on:
-  workflow_dispatch:
+  release: [ published ]
 
 jobs:
   docs_build:
@@ -21,3 +21,5 @@ jobs:
     - name: Print CIL git tag
       run: |
         echo ${{ env.tag }}
+    - name: Get REF
+      run: echo ${GITHUB_REF#refs/tags/}
