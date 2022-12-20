@@ -64,12 +64,13 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: DocumentationHTML
-        path: docs/build
+        path: ~/docs/build
+    - uses: actions/checkout@v3
+      with:
+        ref: gh-pages
     - name: Commit documentation changes
       run: |
-        git clone https://github.com/TomographicImaging/CIL.git --branch gh-pages --single-branch gh-pages
-        cp -r docs/build/* gh-pages/
-        cd gh-pages
+        cp -r ~/docs/build/* ./
         touch .nojekyll
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
@@ -81,6 +82,5 @@ jobs:
       uses: ad-m/github-push-action@v0.6.0
       with:
         branch: gh-pages
-        directory: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
