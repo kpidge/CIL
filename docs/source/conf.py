@@ -86,6 +86,12 @@ pygments_style = None
 #
 html_theme = 'pydata_sphinx_theme'
 
+html_theme_options = {
+    "switcher": {
+        "json_url": "https://tomographicimaging.github.io/CIL/nightly/_static/switcher.json",
+    }
+}
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "nightly",
+        "version": "nightly",
+        "url": "https://tomographicimaging.github.io/CIL/nightly/index.html"
+    },
+    {
+        "name": "v22.1.4",
+	"version": "v22.1.4",
+	"url": "https://tomographicimaging.github.io/CIL/v22.1.4/index.html"
+    },
+    {
+        "name": "v22.1.5",
+	"version": "v22.1.5",
+	"url": "https://tomographicimaging.github.io/CIL/v22.1.5/index.html"
+    }
+]
